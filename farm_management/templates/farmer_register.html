@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Register</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Farm Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('farmer_register') }}">Farmer Register</a></li>
+                <li><a href="{{ url_for('farmer_details') }}">Farmer Details</a></li>
+                <li><a href="{{ url_for('sell_agro_products') }}">Sell Agro Products</a></li>
+                <li><a href="{{ url_for('agro_products') }}">Agro Products</a></li>
+                <li><a href="{{ url_for('farmer_records') }}">Records</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Farmer Registration</h2>
+        <form method="POST" action="/farmer_register">
+            <label for="name">Farmer Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="aadhaar">Aadhaar Number:</label>
+            <input type="text" id="aadhaar" name="aadhaar" required><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+
+            <label for="farming_type">Type of Farming:</label>
+            <input type="text" id="farming_type" name="farming_type" required><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+
+            <input type="submit" value="Register">
+        </form>
+    </section>
+</body>
+</html>

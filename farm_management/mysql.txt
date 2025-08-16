@@ -1,0 +1,80 @@
+use farm_management;
+
+
+CREATE TABLE farmer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    aadhaar VARCHAR(100),
+    phone VARCHAR(20),
+    farming_type VARCHAR(20),
+    address VARCHAR(255)
+    
+    
+);
+
+select * from farmer;
+
+desc farmer;
+
+
+
+
+
+CREATE TABLE produc (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100),
+    description TEXT,
+    price DECIMAL(10, 2),
+    email VARCHAR(100)
+);
+
+select * from produc;
+
+
+
+
+
+CREATE TABLE farmer_records (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    aadhaar VARCHAR(255),
+    phone VARCHAR(255),
+    farming_type VARCHAR(20),
+    address VARCHAR(255),
+    action VARCHAR(50),  
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+select * from farmer_records;
+
+
+CREATE TRIGGER after_farmer_insert
+AFTER INSERT ON farmer
+FOR EACH ROW
+INSERT INTO farmer_records (name, aadhaar, phone, action)
+VALUES (NEW.name, NEW.aadhaar, NEW.phone, 'Registered');
+
+
+
+
+CREATE TRIGGER after_farmer_delete
+AFTER DELETE ON farmer
+FOR EACH ROW
+INSERT INTO farmer_records (name, aadhaar, phone, action)
+VALUES (OLD.name, OLD.aadhaar, OLD.phone, 'Deleted');
+
+
+
+
+CREATE TRIGGER after_farmer_update
+AFTER UPDATE ON farmer
+FOR EACH ROW
+INSERT INTO farmer_records (name, aadhaar, phone, action)
+VALUES (NEW.name, NEW.aadhaar, NEW.phone, 'Updated');
+
+
+
+
+
+
+show triggers;

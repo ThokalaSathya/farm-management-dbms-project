@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Agro Products</title>
+    <link rel="stylesheet" href="/static/styles.css">`
+</head>
+<body>
+    <header>
+        <h1>Farm Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('farmer_register') }}">Farmer Register</a></li>
+                <li><a href="{{ url_for('farmer_details') }}">Farmer Details</a></li>
+                <li><a href="{{ url_for('sell_agro_products') }}">Sell Agro Products</a></li>
+                <li><a href="{{ url_for('agro_products') }}">Agro Products</a></li>
+                <li><a href="{{ url_for('farmer_records') }}">Records</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Sell Agro Products</h2>
+        <form method="POST" action="/sell_agro_products">
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required><br>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <input type="submit" value="Sell Product">
+        </form>
+    </section>
+</body>
+</html>
